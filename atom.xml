@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>王兰花椒粉的秘密小窝</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2024-05-05T08:24:19.422Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Wanglanhuajiaofen</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Openwrt UnblockNeteaseMusic使用记录</title>
+    <link href="http://example.com/2024/05/03/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/"/>
+    <id>http://example.com/2024/05/03/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/</id>
+    <published>2024-05-02T16:00:00.000Z</published>
+    <updated>2024-05-05T08:24:19.422Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="起始"><a href="#起始" class="headerlink" title="起始"></a>起始</h1><p>最近搞了一个路由器，360t7，从咸鱼上收的二手，已经刷了openwrt系统(本来还想自己刷的(っ*´Д&#96;)っ雾)，然后今天就在搞各种路由器软件包，找到了luci-unblockneteasemusic后我十分心动，便开始着手配置，结果遇到各种问题，故记下此篇博客(～￣(OO)￣)ブ</p><h2 id="Openwrt-UnblockNeteaseMusic-使用记录"><a href="#Openwrt-UnblockNeteaseMusic-使用记录" class="headerlink" title="Openwrt UnblockNeteaseMusic 使用记录"></a>Openwrt UnblockNeteaseMusic 使用记录</h2><p>unblockNeteaseMusic可以用来播放网易云音乐中的灰色歌曲，或者实现免vip播放会员歌曲等功能ヽ(✿ﾟ▽ﾟ)ノ<br>但是该软件包出的挺早的了，对于最新版的网易云音乐已经无法实现上述功能了(((φ(◎ロ◎;)φ)))<br>可能是最新版本网易云音乐做了奇奇怪怪的防护措施(-__-)&#x3D;@))&gt; o然后直接把这个东西给ban了。</p><h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>360t7路由器 237系统(LuCI openwrt-21.02 &#x2F; LuCI openwrt-21.02)<br><a href="https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic">luci-unblockneteasemusic(JavaScript) 3.2</a> ps:也可以在luci管理页面下载<br><a href="https://www.lanzoui.com/ioPkInxh8yf">网易云音乐2.7.2(上古版本)</a><br><a href="https://pan.baidu.com/s/18zVWFPHZ4PXaKgjc0LXMMg?pwd=8q64">安卓极速版网易云音乐</a> 提取码:8q64</p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul><li><p>下载好软件包后，在路由器luci设置页面选择服务，选中解除网易云音乐播放限制。</p></li><li><p>点击启用服务，其他选项可按照自己意愿选择。</p></li><li><p>开启进阶设置，在命令行输入</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ping</span> music.<span class="number">163</span>.com</span><br></pre></td></tr></table></figure><p>然后将网易云音乐的ip复制，粘贴到网易云服务器ip。</p></li><li><p>设置&#x2F;下载证书及公钥私钥<br>参考链接<a href="https://github.com/nondanee/UnblockNeteaseMusic/issues/48#issuecomment-477870013">证书下载</a><br>然后在luci设置页面选择自签发证书的公钥私钥为自签的公钥私钥。</p></li><li><p>附上我的配置图<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/05/04/Mob3xTjPWkhZGat.png" alt="meow" data-caption="meow" loading="lazy"></p></li><li><p>在windows网易云音乐中设置代理，服务器为你的路由器ip，端口为5200(默认)，然后重启网易云音乐，即可实现开头提的功能。</p></li><li><p>如果还是不行，考虑将路由器的ipv6给禁用</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/odhcpd disable</span><br><span class="line">/etc/init.d/odhcpd stop</span><br></pre></td></tr></table></figure></li><li><p><del>安卓端设置路由器wifi代理：PAC地址为http:&#x2F;&#x2F;你的路由器ip&#x2F;proxy.pac</del><br><del>ps：可以在设置前先登录你的账号，然后再设置代理，否则设置代理后你就无法登录了。</del><br><strong>上述方法会导致哔哩哔哩报错：无网络连接，其它app是否有这个问题暂时不清楚。</strong><br><strong>注：经本人测试，只要连接路由器WIFI，就可以实现上述功能，不需要设置代理。</strong></p></li><li><p>此时你就可以在连接你路由器局域网的情况下在windows和安卓机上面畅享  脚臭  了(&#x2F;&#x2F;&#x2F;￣皿￣)○～</p></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  花了很久很久才搞明白这个东西，一直遇到开启服务后网易云音乐会断网的问题怒ε&#x3D;怒ε&#x3D;( o｀ω′)ノ</p><p>  查了很多很多资料，时间都挺早的，应该是大家最近搞这个软件包的人不多，然后我四面八方收集信息之后，终于找到了以上解决办法(ー&#96;´ー)</p><p>  如果有问题可以联系我 ○|￣|_</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;起始&quot;&gt;&lt;a href=&quot;#起始&quot; class=&quot;headerlink&quot; title=&quot;起始&quot;&gt;&lt;/a&gt;起始&lt;/h1&gt;&lt;p&gt;最近搞了一个路由器，360t7，从咸鱼上收的二手，已经刷了openwrt系统(本来还想自己刷的(っ*´Д&amp;#96;)っ雾)，然后今天就在搞各</summary>
+      
+    
+    
+    
+    
+    <category term="openwrt" scheme="http://example.com/tags/openwrt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QAuxiliary安装流程</title>
+    <link href="http://example.com/2024/04/29/QAuxiliary/"/>
+    <id>http://example.com/2024/04/29/QAuxiliary/</id>
+    <published>2024-04-28T16:00:00.000Z</published>
+    <updated>2024-04-29T09:49:51.314Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h2><p>QAuxiliary安装是我第一次从头到尾都是自己一步一步摸索出来的（○｀ 3′○）<br>因此可能会有一些地方存在问题，可联系我进行更改(u‿ฺu✿ฺ)</p><h3 id="需要提前下载的软件"><a href="#需要提前下载的软件" class="headerlink" title="需要提前下载的软件"></a>需要提前下载的软件</h3><ul><li>LSPatch:用于将QAuxiliary模块插入的QQ的APK中。</li><li>QAuxiliary:To make OICQ great again(๑•̀ㅂ•́)و✧!!!是一个基于QNotified的开源的Xposed框架。</li><li>Shizuku(或许也用不到这个，雾):可以在未root情况下使一些app使用root权限。</li></ul><h3 id="软件下载链接"><a href="#软件下载链接" class="headerlink" title="软件下载链接"></a>软件下载链接</h3><ul><li><a href="https://github.com/LSPosed/LSPatch/releases">LSPatch</a></li><li><a href="https://github.com/cinit/QAuxiliary/releases">QAuxiliary</a></li><li><a href="https://github.com/RikkaApps/Shizuku/releases">Shizuku</a></li></ul><h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ul><li>安装好上述三个软件ヽ(✿ﾟ▽ﾟ)ノ</li><li>将当前QQ卸载，重新下载一个QQ的APK，并存放在一个指定目录，不用安装。</li><li>打开Shizuku，按照软件提示来启动Shizuku服务。</li><li>启动后给LSPatch软件开放权限。</li><li>打开LSPatch，在下面这个页面点击＋号<img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/04/29/sHk3aXmh1Wqp6Se.jpg" alt="LSPatch step 1" data-caption="LSPatch step 1" loading="lazy"></li><li>第一次操作需要先随便选择一个目录来存放被注入模块的APK的路径<img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/04/29/lWJw7VHMnDLyCox.jpg" alt="LSPatch step 2" data-caption="LSPatch step 2" loading="lazy"></li><li>选择好后再选择刚刚下载的QQ APK，然后等待注入成功即可φ(≧ω≦*)♪</li><li>注入成功后在QQ侧滑栏设置页面即可看到QAuxiliary选项，至此大功告成(๑•̀ㅂ•́)و✧</li></ul><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>我好喜欢开源w(ﾟДﾟ)w，虽然还只是一个刚刚接触的小趴菜Σ( ° △ °|||)︴<br>伟大，无需多言Ψ(￣∀￣)Ψ！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Attention&quot;&gt;&lt;a href=&quot;#Attention&quot; class=&quot;headerlink&quot; title=&quot;Attention&quot;&gt;&lt;/a&gt;Attention&lt;/h2&gt;&lt;p&gt;QAuxiliary安装是我第一次从头到尾都是自己一步一步摸索出来的（○｀ 3′○）</summary>
+      
+    
+    
+    
+    
+    <category term="QAuxiliary" scheme="http://example.com/tags/QAuxiliary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>selenium报错ValueError</title>
+    <link href="http://example.com/2024/03/24/selenium/"/>
+    <id>http://example.com/2024/03/24/selenium/</id>
+    <published>2024-03-23T16:00:00.000Z</published>
+    <updated>2024-03-24T06:28:27.051Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Selenium-报错ValueError解决"><a href="#Selenium-报错ValueError解决" class="headerlink" title="Selenium 报错ValueError解决"></a>Selenium 报错ValueError解决</h1><ul><li><p>错误<br>  在python中使用selenium进行网页自动化&#x2F;爬虫操作时，执行下面语句</p>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver = webdriver.Edge()</span><br></pre></td></tr></table></figure><p>  可能会报错：ValueError: Timeout value connect was ……, but it must be an int, float or None…..(&#x2F;- -)&#x2F;</p></li><li><p>原因<br>出错原因：selenium当前版本与urllib3版本不兼容╮（﹀_﹀）╭</p></li><li><p>解决方法<br>只需要更新为最新版本的selenium与urllib3即可Σ( ° △ °|||)︴</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install -U selenimu</span><br><span class="line">pip install -U urllib3</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Selenium-报错ValueError解决&quot;&gt;&lt;a href=&quot;#Selenium-报错ValueError解决&quot; class=&quot;headerlink&quot; title=&quot;Selenium 报错ValueError解决&quot;&gt;&lt;/a&gt;Selenium 报错ValueE</summary>
+      
+    
+    
+    
+    
+    <category term="python, selenium" scheme="http://example.com/tags/python-selenium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu20.04有线网络消失</title>
+    <link href="http://example.com/2024/03/24/net/"/>
+    <id>http://example.com/2024/03/24/net/</id>
+    <published>2024-03-23T16:00:00.000Z</published>
+    <updated>2024-03-24T06:30:17.622Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Ubuntu20-04有线网络消失问题解决方法"><a href="#Ubuntu20-04有线网络消失问题解决方法" class="headerlink" title="Ubuntu20.04有线网络消失问题解决方法"></a>Ubuntu20.04有线网络消失问题解决方法</h1><ul><li><p>现象<br>右上角有线网络图标消失，设置中也看不到了(・-・*)</p></li><li><p>原因<br>我个人出现的原因是上次非正常强制关机了，下次开机就看不到有线网络图标了(＠_＠;)</p></li><li><p>解决方法<br>打开终端</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nmcli networking off</span><br><span class="line">sudo nmcli networking on</span><br></pre></td></tr></table></figure><p>便可以看到有线网络图标重新出现啦╰(<em>°▽°</em>)╯</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Ubuntu20-04有线网络消失问题解决方法&quot;&gt;&lt;a href=&quot;#Ubuntu20-04有线网络消失问题解决方法&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu20.04有线网络消失问题解决方法&quot;&gt;&lt;/a&gt;Ubuntu20.04有线网络消失</summary>
+      
+    
+    
+    
+    
+    <category term="ubuntu, network" scheme="http://example.com/tags/ubuntu-network/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu安装+配置clash</title>
+    <link href="http://example.com/2024/02/29/clash/"/>
+    <id>http://example.com/2024/02/29/clash/</id>
+    <published>2024-02-28T16:00:00.000Z</published>
+    <updated>2024-02-29T08:02:38.891Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Ubuntu23-10安装clash全过程-各种问题解决方案"><a href="#Ubuntu23-10安装clash全过程-各种问题解决方案" class="headerlink" title="Ubuntu23.10安装clash全过程(各种问题解决方案)"></a>Ubuntu23.10安装clash全过程(各种问题解决方案)</h1><!-- <font face="逐浪新宋" color=grey size=6>该篇blog将详细描述自己在ubuntu系统下安装clash的过程和遇到的各种问题与bug_ o(￣ヘ￣o＃)</font> --><hr><h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><hr><ul><li>安装clash包<ul><li><p>在终端中首先开启root权限</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure></li><li><p>在当前用户目录中创建名为clash的文件夹（名字自取即可）然后切换到该目录</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ./clash</span><br><span class="line">cd ./clash</span><br></pre></td></tr></table></figure></li><li><p>下载clash的几种方式(因为clash作者删库跑路了，所以无法从作者的仓库中下载)</p><ul><li><p>wget + 下载url</p>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Dreamacro/clash/releases/download/v1.14.0/clash-linux-amd64-v1.14.0.gz</span><br></pre></td></tr></table></figure></li><li><p>在ubuntu firefox浏览器找github备份仓库直接下载(考验你的网络(☆´益&#96;)c)</p><ul><li>这里我直接贴备用仓库的url   <a href="https://github.com/doreamon-design/clash/releases" title="bushi">备用仓库</a></li><li>注意选择对应的版本<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/02/29/76kTCNn4QjL5ehA.png" alt="这是我选的版本" data-caption="这是我选的版本" loading="lazy"></li></ul></li><li><p>如果显示无法连接，则可能是系统代理的问题(对于我是这样(￣△￣；)),参考下面blog<br> <a href="https://blog.csdn.net/kids_budong_c/article/details/123479499," title="bushi">这是解决大法!</a></p></li></ul></li></ul></li></ul><hr><ul><li>解压clash包<br>我下载的clash包的后缀是.tar.gz<br>这里可能会遇到如下问题:<ul><li>解压后tar后缀还在<br>解决方法:   <code>tar -zxvf 压缩文件名.tar.gz</code></li><li>大部分教程给的都是gzip解压，这个方式对我不适用</li></ul></li></ul><hr><ul><li><p>赋予权限</p>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x 解压缩后的文件名</span><br></pre></td></tr></table></figure></li></ul><hr><ul><li><p>移动</p> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 解压缩后的文件名 /usr/local/bin/clash</span><br></pre></td></tr></table></figure></li></ul><hr><ul><li><p>查看版本</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clash -v</span><br></pre></td></tr></table></figure><ul><li>如果这一步报错：无法执行二进制文件，那就是大概你下载的clash包有问题，我的解决方法是用上述第二种方式o(*≧▽≦)ツ┏━┓</li></ul><p>如果没有报错，正常显示出了clash版本号，那么到目前为止都非常顺利的成功了( ￣ー￣)人(^▽^ )</p></li></ul><hr><ul><li>启动clash<ul><li><p>启动clash</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clash</span><br></pre></td></tr></table></figure><p>这一步会显示系统缺失有些配置文件，自动会给你下载好</p></li><li><p>导入配置文件(配置文件获取方式不再赘述)<br>配置文件所在目录:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$home/.config/clash/</span><br></pre></td></tr></table></figure><p>.config为隐藏文件夹，对于不熟悉终端的小伙伴在图形界面的文件夹按下CTRL+H即可<br>将获得的配置文件改名为config.yaml替换上述目录中的config.yaml即可</p></li><li><p>重新启动clash</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clash</span><br></pre></td></tr></table></figure><p>此时会显示出你的订阅的相关信息，即表示成功<br><strong>在启动clash的条件下，访问以下链接可以进入clash图形控制页面</strong><br><a href="https://clash.razord.top/#/proxies" title="就是我啦Σ(っ °Д °;)っ">clash图形控制页面</a></p></li></ul></li></ul><hr><ul><li>Ubuntu系统网络代理设置<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/02/29/8INVmetSdK9gRWk.png" alt="Alt text" data-caption="Alt text" loading="lazy"><br>这里我遇到一个问题是，我成功连接了梯子之后仍然翻不了墙，就一直在调这个代理设置，最终在按照上图输入之后可以了 <strong>但是我不知道是不是因为这个原因才成功的Ｏ(≧口≦)Ｏ</strong></li></ul><hr><ul><li>设置开机自启<ul><li><p>复制以下片段</p> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Description=Clash - A rule-based tunnel in Go</span><br><span class="line">Documentation=https://github.com/Dreamacro/clash/wiki</span><br><span class="line">[Service]</span><br><span class="line">OOMScoreAdjust=-1000</span><br><span class="line">ExecStart=/usr/local/bin/clash -f /home/rongrong/.config/clash/config.yaml # 注意这里要根据自己的配置路径进行相应的修改</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=5</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure></li><li><p>依次输入以下命令即可</p> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">systemctl enable clash</span><br><span class="line">systemctl start clash</span><br><span class="line">echo -e &quot;export http_proxy=&lt;http://127.0.0.1:7890\nexport&gt; https_proxy=&lt;http://127.0.0.1:7890&gt;&quot; &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure></li></ul></li></ul><hr><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>ubuntu安装和配置clash确实是一个繁琐的过程，而网上的教程没有对一些问题的解决方案，我把自己在配置过程中遇到的问题写了出来，供大家参考!!!</p><hr><!-- <font face="逐浪新宋" color=cyan size=10>谢啦!!☆⌒(*＾-゜)v</font> -->]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Ubuntu23-10安装clash全过程-各种问题解决方案&quot;&gt;&lt;a href=&quot;#Ubuntu23-10安装clash全过程-各种问题解决方案&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu23.10安装clash全过程(各种问题解决方案)&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="clash" scheme="http://example.com/tags/clash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo搭建博客bug小结</title>
+    <link href="http://example.com/2024/02/20/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2bug%E5%B0%8F%E7%BB%93/"/>
+    <id>http://example.com/2024/02/20/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2bug%E5%B0%8F%E7%BB%93/</id>
+    <published>2024-02-19T16:00:00.000Z</published>
+    <updated>2024-02-19T16:27:36.570Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hexo搭建博客的过程中遇到的一些问题"><a href="#hexo搭建博客的过程中遇到的一些问题" class="headerlink" title="hexo搭建博客的过程中遇到的一些问题"></a>hexo搭建博客的过程中遇到的一些问题</h1><h2 id="node-js与npm相关"><a href="#node-js与npm相关" class="headerlink" title="node.js与npm相关"></a>node.js与npm相关</h2><ul><li>下载<br>从官网下载node.js后，基本只需要一路next即可，最重要的是选择add to path.</li><li>使用源<ul><li><p>截止到2024&#x2F;2&#x2F;19为止，网上很多教程中的淘宝源均已无法使用，下面的为最新且有效的淘宝镜像:<a href="https://registry.npmmirror.com/">https://registry.npmmirror.com</a></p></li><li><p>先下载好cnpm会让之后的工作事半功倍b（￣▽￣）d</p></li></ul></li></ul><p>下面贴上代码:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm i -g cnpm --registry=https://registry.npmmirror.com</span><br></pre></td></tr></table></figure><ul><li>目录权限问题：如果遇到npm下载报错说权限不够等问题，win + r 输入cmd之后不着急回车，此时ctrl+shift+回车即可以管理员身份打开cmd，即可解决问题。</li></ul><hr><h2 id="hexo相关"><a href="#hexo相关" class="headerlink" title="hexo相关"></a>hexo相关</h2><ul><li><p>如果成功的下载了cnpm，那么之后使用npm下载的东西都用cnpm来替代，就能解决大部分无法下载的问题(๑•̀ㅂ•́)و✧</p></li><li><p>创建一个专门处理blog的文件夹，之后所有操作都在这个文件夹的根目录进行即可。</p></li><li><p><em><strong>重点</strong></em>：hexo init报错: 此时只需要在根目录输入:</p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cnpm install</span><br><span class="line">hexo s</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>即可解决。</p><hr><h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><ul><li>在根目录_config.yml文件中ropo后面输入github仓库页的ssh链接而非https链接。</li><li>所有键值对后面都有 <strong>空格</strong></li></ul><hr><h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>只需要在对应开源主题看文档即可按照自己意愿更改。</p><hr><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这篇文章集结了全部(大概)我在用一下午时间hexo搭建博客中遇到的问题，网上的方法有对的也有错的，经历了许久的试错后，终于找到的正确方法都被我记录在上面啦O(∩_∩)O!!!</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;hexo搭建博客的过程中遇到的一些问题&quot;&gt;&lt;a href=&quot;#hexo搭建博客的过程中遇到的一些问题&quot; class=&quot;headerlink&quot; title=&quot;hexo搭建博客的过程中遇到的一些问题&quot;&gt;&lt;/a&gt;hexo搭建博客的过程中遇到的一些问题&lt;/h1&gt;&lt;h2 i</summary>
+      
+    
+    
+    
+    
+    <category term="hexo" scheme="http://example.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初搭博客</title>
+    <link href="http://example.com/2024/02/19/%E5%88%9D%E6%90%AD%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2024/02/19/%E5%88%9D%E6%90%AD%E5%8D%9A%E5%AE%A2/</id>
+    <published>2024-02-19T06:44:25.000Z</published>
+    <updated>2024-02-19T16:24:04.817Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MyFirstBlog"><a href="#MyFirstBlog" class="headerlink" title="MyFirstBlog"></a>MyFirstBlog</h1><p>date: 2024-02-19 14:46</p><hr><h2 id="这是我第一篇博客，但这不是我第一次搭建博客"><a href="#这是我第一篇博客，但这不是我第一次搭建博客" class="headerlink" title="这是我第一篇博客，但这不是我第一次搭建博客&#x3D;,&#x3D;"></a>这是我第一篇博客，但这不是我第一次搭建博客&#x3D;,&#x3D;</h2><h2 id="庆祝成功-•̀-ω-•́-y"><a href="#庆祝成功-•̀-ω-•́-y" class="headerlink" title="庆祝成功( •̀ ω •́ )y"></a>庆祝成功( •̀ ω •́ )y</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;MyFirstBlog&quot;&gt;&lt;a href=&quot;#MyFirstBlog&quot; class=&quot;headerlink&quot; title=&quot;MyFirstBlog&quot;&gt;&lt;/a&gt;MyFirstBlog&lt;/h1&gt;&lt;p&gt;date: 2024-02-19 14:46&lt;/p&gt;
+&lt;hr&gt;
+&lt;h</summary>
+      
+    
+    
+    
+    
+    <category term="test" scheme="http://example.com/tags/test/"/>
+    
+  </entry>
+  
+</feed>
