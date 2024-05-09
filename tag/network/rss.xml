@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>王兰花椒粉的秘密小窝 • Posts by &#34;network&#34; tag</title>
+        <link>http://wanglanhuajiaofen.fun</link>
+        <description></description>
+        <language>en</language>
+        <pubDate>Sun, 24 Mar 2024 00:00:00 +0800</pubDate>
+        <lastBuildDate>Sun, 24 Mar 2024 00:00:00 +0800</lastBuildDate>
+        <category>hexo</category>
+        <category>clash</category>
+        <category>test</category>
+        <category>QAuxiliary</category>
+        <category>openwrt</category>
+        <category>python</category>
+        <category>selenium</category>
+        <category>ubuntu</category>
+        <category>network</category>
+        <item>
+            <guid isPermalink="true">http://wanglanhuajiaofen.fun/2024/03/24/net/</guid>
+            <title>Ubuntu20.04有线网络消失</title>
+            <link>http://wanglanhuajiaofen.fun/2024/03/24/net/</link>
+            <category>ubuntu</category>
+            <category>network</category>
+            <pubDate>Sun, 24 Mar 2024 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;Ubuntu20-04有线网络消失问题解决方法&#34;&gt;&lt;a href=&#34;#Ubuntu20-04有线网络消失问题解决方法&#34; class=&#34;headerlink&#34; title=&#34;Ubuntu20.04有线网络消失问题解决方法&#34;&gt;&lt;/a&gt;Ubuntu20.04有线网络消失问题解决方法&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;现象&lt;br&gt;右上角有线网络图标消失，设置中也看不到了(・-・*)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;原因&lt;br&gt;我个人出现的原因是上次非正常强制关机了，下次开机就看不到有线网络图标了(＠_＠;)&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解决方法&lt;br&gt;打开终端&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;linux&#34;&gt;sudo nmcli networking off
+sudo nmcli networking on
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;便可以看到有线网络图标重新出现啦╰(&lt;em&gt;°▽°&lt;/em&gt;)╯&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
