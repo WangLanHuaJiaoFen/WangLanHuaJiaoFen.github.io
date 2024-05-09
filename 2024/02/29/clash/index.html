@@ -1,346 +1,224 @@
-<!doctype html>
-<html lang="en"><head>
-<title>Ubuntu安装+配置clash - 王兰花椒粉的秘密小窝</title>
-<meta charset="UTF-8">
-<meta name="keywords" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<meta name="description" content="Ubuntu23.10安装clash全过程(各种问题解决方案)   操作步骤  安装clash包 在终端中首先开启root权限 1su  在当前用户目录中创建名为clash的文件夹（名字自取即可）然后切换到该目录 12mkdir .&#x2F;clashcd .&#x2F;clash  下载clash的几种方式(因为clash作者删库跑路了，所以无法从作者的仓库中下载)  wget + 下载url   1wget h">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu安装+配置clash">
-<meta property="og:url" content="http://example.com/2024/02/29/clash/index.html">
-<meta property="og:site_name" content="王兰花椒粉的秘密小窝">
-<meta property="og:description" content="Ubuntu23.10安装clash全过程(各种问题解决方案)   操作步骤  安装clash包 在终端中首先开启root权限 1su  在当前用户目录中创建名为clash的文件夹（名字自取即可）然后切换到该目录 12mkdir .&#x2F;clashcd .&#x2F;clash  下载clash的几种方式(因为clash作者删库跑路了，所以无法从作者的仓库中下载)  wget + 下载url   1wget h">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.loli.net/2024/02/29/76kTCNn4QjL5ehA.png">
-<meta property="og:image" content="https://s2.loli.net/2024/02/29/8INVmetSdK9gRWk.png">
-<meta property="article:published_time" content="2024-02-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-29T08:02:38.891Z">
-<meta property="article:author" content="Wanglanhuajiaofen">
-<meta property="article:tag" content="clash">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/02/29/76kTCNn4QjL5ehA.png">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Ubuntu安装+配置clash | 王兰花椒粉的秘密小窝</title>
+    <meta name="author" content="Wanglanhuajiaofen" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
-<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
-
-
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1715183692302">
-
-<link rel="stylesheet" href="/css/style.css?v=1715183692302">
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
 
 
-
-
-    
-        <link rel="stylesheet" href="/custom.css?v=1715183692302">
-    
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
 
 
 
-<script src="/lib/mdui_043tiny/mdui.js" async></script>
-<script src="/lib/fancybox/fancybox.umd.js" async></script>
-<script src="/lib/lax.min.js" async></script>
-
-
-<script async src="/js/app.js?v=1715183692302"></script>
-
- 
+<script src="/js/lib/preview.js"></script>
 
 
 
-<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="王兰花椒粉的秘密小窝" type="application/atom+xml">
-</head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://s2.loli.net/2024/02/29/JzLXTutPlVrEaec.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Wanglanhuajiaofen"><img src="https://s2.loli.net/2024/02/29/ubGkRrE85mS6nc1.jpg" alt="Wanglanhuajiaofen"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
-    <div class="nexmoe-avatar mdui-ripple">
-        <a href="/" title="Wanglanhuajiaofen">
-            <img src="https://s2.loli.net/2024/02/29/ubGkRrE85mS6nc1.jpg" alt="Wanglanhuajiaofen" alt="Wanglanhuajiaofen">
-        </a>
-    </div>
-    <div class="nexmoe-count">
-        <div><span>Articles</span>7</div>
-        <div><span>Tags</span>7</div>
-        <div><span>Categories</span>0</div>
-    </div>
-    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
-            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
-            <div class="mdui-list-item-content">
-                回到首页
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>王兰花椒粉的秘密小窝</span>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
-            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
-            <div class="mdui-list-item-content">
-                文章归档
-            </div>
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://github.com/WangLanHuaJiaoFen" title="我的朋友">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                我的朋友
-            </div>
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://github.com/WangLanHuaJiaoFen" title="给我赞助">
-            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
-            <div class="mdui-list-item-content">
-                给我赞助
-            </div>
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
         </a>
         
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://github.com/WangLanHuaJiaoFen" title="关于王兰花椒粉">
-            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-            <div class="mdui-list-item-content">
-                关于王兰花椒粉
-            </div>
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
         </a>
         
-    </div>
-    
-    
-        
-        <div class="nexmoe-widget-wrap">
-    <div class="nexmoe-widget nexmoe-search">
-         
-            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
-                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
-            </form>
-         
-    </div>
-</div>
-
-
-
-
-    
-        
-        <div class="nexmoe-widget-wrap">
-	<div class="nexmoe-widget nexmoe-social">
-		<a
-			class="mdui-ripple"
-			href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=s0PJU1RCdBBvqAgcOh1xafUqheYtDKTk&authKey=ohmPvQ34vdNTHenVKDf2jjYjKUtdo%2FNYnsgL4HH"
-			target="_blank"
-			mdui-tooltip="{content: 'QQ群'}"
-			style="
-				color: rgb(249, 174, 8);
-				background-color: rgba(249, 174, 8, .1);
-			"
-		>
-			<i
-				class="nexmoefont icon-QQ"
-			></i> </a
-		><a
-			class="mdui-ripple"
-			href="https://space.bilibili.com/95905761"
-			target="_blank"
-			mdui-tooltip="{content: '哔哩哔哩'}"
-			style="
-				color: rgb(231, 106, 141);
-				background-color: rgba(231, 106, 141, .1);
-			"
-		>
-			<i
-				class="nexmoefont icon-bilibili"
-			></i> </a
-		><a
-			class="mdui-ripple"
-			href="https://github.com/WangLanHuaJiaoFen"
-			target="_blank"
-			mdui-tooltip="{content: 'GitHub'}"
-			style="
-				color: rgb(25, 23, 23);
-				background-color: rgba(25, 23, 23, .1);
-			"
-		>
-			<i
-				class="nexmoefont icon-github"
-			></i> </a
-		>
-	</div>
-</div>
-
-    
-        
-        
-
-    
-        
-        
-  <div class="nexmoe-widget-wrap">
-    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/QAuxiliary/" style="font-size: 10px;">QAuxiliary</a> <a href="/tags/clash/" style="font-size: 10px;">clash</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/openwrt/" style="font-size: 10px;">openwrt</a> <a href="/tags/python-selenium/" style="font-size: 10px;">python, selenium</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/ubuntu-network/" style="font-size: 10px;">ubuntu, network</a>
-    </div>
-    
-      <script>
-        var maxTagcloud = parseInt(17);
-        var tags_length = parseInt(7);
-        var tags_arr = [];
-        for(var i = 0; i < tags_length; i++){
-          tags_arr.push(i);
-        }
-        tags_arr.sort(function (l, r) {
-          return Math.random() > 0.5 ? -1 : 1;
-        });
-        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
-        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
-          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
-        }
-      </script>
-    
-  </div>
-
-    
-        
-        <!-- 一言 -->
-<div class="nexmoe-widget-wrap">
-  <h3 class="nexmoe-widget-title">
-    一言
-  </h3>
-  <div class="nexmoe-widget">
-    <ul class="hitokoto-box">
-      <li id="hitokoto_text_parent" class="hitokoto-text" hitokotoCategory="">
-        <a href="#" id="hitokoto_text">
-          
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
         </a>
-        <a href="#" id="hitokoto_error_text" style="display: none;">
-          
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<script>
-  let hitokotoText = document.getElementById('hitokoto_text')
-  let hitokotoErroText = document.getElementById('hitokoto_error_text')
-  let hitokotoCategory = document.getElementById('hitokoto_text_parent').getAttribute('hitokotoCategory')
-  window.addEventListener('load', function () {
-    let url = 'https://v1.hitokoto.cn'
-    if (hitokotoCategory) {
-      url += '?c=' + hitokotoCategory
-    }
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        hitokotoText.innerText = "「 " + data.hitokoto + " 」 from " + data.from
-        hitokotoText.href = 'https://hitokoto.cn/?uuid=' + data.uuid
-      })
-      .catch((reason) => {
-        console.error(11, reason)
-        hitokotoText.style.display = 'none'
-        hitokotoErroText.style.display = 'block'
-      })
-  })
-</script>
-    
         
-        
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Archive</h3>
-    <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">7</span></li></ul>
-    </div>
-  </div>
-
-
-
-    
-        
-        
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Recent Posts</h3>
-    <div class="nexmoe-widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/05/03/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/">Openwrt UnblockNeteaseMusic使用记录</a>
-          </li>
-        
-          <li>
-            <a href="/2024/04/29/QAuxiliary/">QAuxiliary安装流程</a>
-          </li>
-        
-          <li>
-            <a href="/2024/03/24/selenium/">selenium报错ValueError</a>
-          </li>
-        
-          <li>
-            <a href="/2024/03/24/net/">Ubuntu20.04有线网络消失</a>
-          </li>
-        
-          <li>
-            <a href="/2024/02/29/clash/">Ubuntu安装+配置clash</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-    
-        
-   
-    <div class="nexmoe-copyright">
-        &copy; 2024 Wanglanhuajiaofen
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
-        
-    </div>
-</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
-  <article>
-    
-        <div class="nexmoe-post-cover absolute" style="padding-top: 26.666666666666668%;"> 
-            <img src="https://s2.loli.net/2024/02/29/A4itdREq2V1Ucen.png" alt="Ubuntu安装+配置clash" loading="lazy">
-            <h1>Ubuntu安装+配置clash</h1>
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;王兰花椒粉的秘密小窝</span>
         </div>
-    
-    
-    <div class="nexmoe-post-meta">
-    <div class="nexmoe-rainbow">
-        <a class="nexmoefont icon-calendar-fill">2024年02月29日</a>
-        
-        
-    <a><i class="nexmoefont icon-areachart"></i>约814字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要3分钟</a>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>Ubuntu安装+配置clash</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/29
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/clash/" style="color: #03a9f4">
+                    clash
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
     
-    
-    
-    
-    
-</div>
-
-    <h1 id="Ubuntu23-10安装clash全过程-各种问题解决方案"><a href="#Ubuntu23-10安装clash全过程-各种问题解决方案" class="headerlink" title="Ubuntu23.10安装clash全过程(各种问题解决方案)"></a>Ubuntu23.10安装clash全过程(各种问题解决方案)</h1><!-- <font face="逐浪新宋" color=grey size=6>该篇blog将详细描述自己在ubuntu系统下安装clash的过程和遇到的各种问题与bug_ o(￣ヘ￣o＃)</font> -->
+    <div class="content" v-pre>
+        <h1 id="Ubuntu23-10安装clash全过程-各种问题解决方案"><a href="#Ubuntu23-10安装clash全过程-各种问题解决方案" class="headerlink" title="Ubuntu23.10安装clash全过程(各种问题解决方案)"></a>Ubuntu23.10安装clash全过程(各种问题解决方案)</h1><!-- <font face="逐浪新宋" color=grey size=6>该篇blog将详细描述自己在ubuntu系统下安装clash的过程和遇到的各种问题与bug_ o(￣ヘ￣o＃)</font> -->
 
 <hr>
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><hr>
 <ul>
 <li>安装clash包<ul>
 <li><p>在终端中首先开启root权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
+<pre><code class="linux">su
+</code></pre>
 </li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+<ul>
 <li><p>在当前用户目录中创建名为clash的文件夹（名字自取即可）然后切换到该目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ./clash</span><br><span class="line">cd ./clash</span><br></pre></td></tr></table></figure>
+<pre><code class="linux">mkdir ./clash
+cd ./clash
+</code></pre>
 </li>
 <li><p>下载clash的几种方式(因为clash作者删库跑路了，所以无法从作者的仓库中下载)</p>
 <ul>
 <li><p>wget + 下载url</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/Dreamacro/clash/releases/download/v1.14.0/clash-linux-amd64-v1.14.0.gz</span><br></pre></td></tr></table></figure>
+<pre><code>wget https://github.com/Dreamacro/clash/releases/download/v1.14.0/clash-linux-amd64-v1.14.0.gz
+</code></pre>
 </li>
 <li><p>在ubuntu firefox浏览器找github备份仓库直接下载(考验你的网络(☆´益&#96;)c)</p>
 <ul>
 <li>这里我直接贴备用仓库的url   <a target="_blank" rel="noopener" href="https://github.com/doreamon-design/clash/releases" title="bushi">备用仓库</a></li>
-<li>注意选择对应的版本<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/02/29/76kTCNn4QjL5ehA.png" alt="这是我选的版本" data-caption="这是我选的版本" loading="lazy"></li>
+<li>注意选择对应的版本<br><img src="https://s2.loli.net/2024/02/29/76kTCNn4QjL5ehA.png" alt="这是我选的版本" title="myversion"></li>
 </ul>
 </li>
 <li><p>如果显示无法连接，则可能是系统代理的问题(对于我是这样(￣△￣；)),参考下面blog<br> <a target="_blank" rel="noopener" href="https://blog.csdn.net/kids_budong_c/article/details/123479499," title="bushi">这是解决大法!</a></p>
-</li>
-</ul>
 </li>
 </ul>
 </li>
@@ -356,18 +234,22 @@
 <hr>
 <ul>
 <li><p>赋予权限</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x 解压缩后的文件名</span><br></pre></td></tr></table></figure></li>
+<pre><code class="linux">chmod +x 解压缩后的文件名
+</code></pre>
+</li>
 </ul>
 <hr>
 <ul>
 <li><p>移动</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 解压缩后的文件名 /usr/local/bin/clash</span><br></pre></td></tr></table></figure></li>
+<pre><code class="linux"> mv 解压缩后的文件名 /usr/local/bin/clash
+</code></pre>
+</li>
 </ul>
 <hr>
 <ul>
 <li><p>查看版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clash -v</span><br></pre></td></tr></table></figure>
-
+<pre><code class="linux">clash -v
+</code></pre>
 <ul>
 <li>如果这一步报错：无法执行二进制文件，那就是大概你下载的clash包有问题，我的解决方法是用上述第二种方式o(*≧▽≦)ツ┏━┓</li>
 </ul>
@@ -378,18 +260,18 @@
 <ul>
 <li>启动clash<ul>
 <li><p>启动clash</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clash</span><br></pre></td></tr></table></figure>
-
+<pre><code>clash
+</code></pre>
 <p>这一步会显示系统缺失有些配置文件，自动会给你下载好</p>
 </li>
 <li><p>导入配置文件(配置文件获取方式不再赘述)<br>配置文件所在目录:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$home/.config/clash/</span><br></pre></td></tr></table></figure>
-
+<pre><code>$home/.config/clash/
+</code></pre>
 <p>.config为隐藏文件夹，对于不熟悉终端的小伙伴在图形界面的文件夹按下CTRL+H即可<br>将获得的配置文件改名为config.yaml替换上述目录中的config.yaml即可</p>
 </li>
 <li><p>重新启动clash</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clash</span><br></pre></td></tr></table></figure>
-
+<pre><code>clash
+</code></pre>
 <p>此时会显示出你的订阅的相关信息，即表示成功<br><strong>在启动clash的条件下，访问以下链接可以进入clash图形控制页面</strong><br><a target="_blank" rel="noopener" href="https://clash.razord.top/#/proxies" title="就是我啦Σ(っ °Д °;)っ">clash图形控制页面</a></p>
 </li>
 </ul>
@@ -397,16 +279,30 @@
 </ul>
 <hr>
 <ul>
-<li>Ubuntu系统网络代理设置<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/02/29/8INVmetSdK9gRWk.png" alt="Alt text" data-caption="Alt text" loading="lazy"><br>这里我遇到一个问题是，我成功连接了梯子之后仍然翻不了墙，就一直在调这个代理设置，最终在按照上图输入之后可以了 <strong>但是我不知道是不是因为这个原因才成功的Ｏ(≧口≦)Ｏ</strong></li>
+<li>Ubuntu系统网络代理设置<br><img src="https://s2.loli.net/2024/02/29/8INVmetSdK9gRWk.png" alt="Alt text"><br>这里我遇到一个问题是，我成功连接了梯子之后仍然翻不了墙，就一直在调这个代理设置，最终在按照上图输入之后可以了 <strong>但是我不知道是不是因为这个原因才成功的Ｏ(≧口≦)Ｏ</strong></li>
 </ul>
 <hr>
 <ul>
 <li>设置开机自启<ul>
 <li><p>复制以下片段</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Description=Clash - A rule-based tunnel in Go</span><br><span class="line">Documentation=https://github.com/Dreamacro/clash/wiki</span><br><span class="line">[Service]</span><br><span class="line">OOMScoreAdjust=-1000</span><br><span class="line">ExecStart=/usr/local/bin/clash -f /home/rongrong/.config/clash/config.yaml # 注意这里要根据自己的配置路径进行相应的修改</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=5</span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>Description=Clash - A rule-based tunnel in Go
+Documentation=https://github.com/Dreamacro/clash/wiki
+[Service]
+OOMScoreAdjust=-1000
+ExecStart=/usr/local/bin/clash -f /home/rongrong/.config/clash/config.yaml # 注意这里要根据自己的配置路径进行相应的修改
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target
+</code></pre>
 </li>
 <li><p>依次输入以下命令即可</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">systemctl enable clash</span><br><span class="line">systemctl start clash</span><br><span class="line">echo -e &quot;export http_proxy=&lt;http://127.0.0.1:7890\nexport&gt; https_proxy=&lt;http://127.0.0.1:7890&gt;&quot; &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure></li>
+<pre><code>
+systemctl enable clash
+systemctl start clash
+echo -e &quot;export http_proxy=&lt;http://127.0.0.1:7890\nexport&gt; https_proxy=&lt;http://127.0.0.1:7890&gt;&quot; &gt;&gt; ~/.bashrc
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
@@ -415,48 +311,50 @@
 <hr>
 <!-- <font face="逐浪新宋" color=cyan size=10>谢啦!!☆⌒(*＾-゜)v</font> -->
 
+    </div>
     
-  </article>
-
-  
-      
-
-  
-  
-  <div class="nexmoe-post-meta nexmoe-rainbow">
-   
     
-        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/clash/" rel="tag">clash</a>
+    
+    
+    
+    
     
 </div>
-  
-  
-    <script async src="/js/copy-codeblock.js?v=1715183692299"></script>
-  
 
-  
-      <div class="nexmoe-post-footer">
-          
-      </div>
-  
-</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
-        <div class="nexmoe-tool">
-
-            
-
-            
-            
-            <button class="mdui-fab catalog" style="overflow:unset;">
-                <i class="nexmoefont icon-i-catalog"></i>
-                <div class="nexmoe-toc">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu23-10%E5%AE%89%E8%A3%85clash%E5%85%A8%E8%BF%87%E7%A8%8B-%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu23.10安装clash全过程(各种问题解决方案)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">操作步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">小结</span></a></li></ol>
-                </div>
-            </button>
-            
-
-            
-
-            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2024 王兰花椒粉的秘密小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Wanglanhuajiaofen
         </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
     </div>
-</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="Search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div></div></body></html>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
