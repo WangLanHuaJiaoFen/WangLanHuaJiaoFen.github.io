@@ -1,17 +1,9 @@
 {
     "version": "https://jsonfeed.org/version/1",
-    "title": "王兰花椒粉的秘密小窝",
+    "title": "王兰花椒粉的秘密小窝 • All posts by \"技术/编程\" category",
     "description": "",
     "home_page_url": "http://wanglanhuajiaofen.fun",
     "items": [
-        {
-            "id": "http://wanglanhuajiaofen.fun/archives.html",
-            "url": "http://wanglanhuajiaofen.fun/archives.html",
-            "title": "文章归档",
-            "date_published": "2024-05-10T15:58:23.462Z",
-            "content_html": "",
-            "tags": []
-        },
         {
             "id": "http://wanglanhuajiaofen.fun/2024/05/03/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/",
             "url": "http://wanglanhuajiaofen.fun/2024/05/03/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/",
@@ -33,28 +25,6 @@
             ]
         },
         {
-            "id": "http://wanglanhuajiaofen.fun/2024/03/24/selenium/",
-            "url": "http://wanglanhuajiaofen.fun/2024/03/24/selenium/",
-            "title": "selenium报错ValueError",
-            "date_published": "2024-03-23T16:00:00.000Z",
-            "content_html": "<h1 id=\"Selenium-报错ValueError解决\"><a href=\"#Selenium-报错ValueError解决\" class=\"headerlink\" title=\"Selenium 报错ValueError解决\"></a>Selenium 报错ValueError解决</h1><ul>\n<li><p>错误<br>  在python中使用selenium进行网页自动化&#x2F;爬虫操作时，执行下面语句</p>\n  <pre><code class=\"hljs python\"><span class=\"hljs-keyword\">from</span> selenium <span class=\"hljs-keyword\">import</span> webdriver\ndriver = webdriver.Edge()</code></pre>\n\n<p>  可能会报错：ValueError: Timeout value connect was ……, but it must be an int, float or None…..(&#x2F;- -)&#x2F;</p>\n</li>\n</ul>\n<span id=\"more\"></span>\n<ul>\n<li><p>原因<br>出错原因：selenium当前版本与urllib3版本不兼容╮（﹀_﹀）╭</p>\n</li>\n<li><p>解决方法<br>只需要更新为最新版本的selenium与urllib3即可Σ( ° △ °|||)︴</p>\n<pre><code class=\"hljs python\">pip install -U selenimu\npip install -U urllib3</code></pre></li>\n</ul>\n",
-            "tags": [
-                "python",
-                "selenium"
-            ]
-        },
-        {
-            "id": "http://wanglanhuajiaofen.fun/2024/03/24/net/",
-            "url": "http://wanglanhuajiaofen.fun/2024/03/24/net/",
-            "title": "Ubuntu20.04有线网络消失",
-            "date_published": "2024-03-23T16:00:00.000Z",
-            "content_html": "<h1 id=\"Ubuntu20-04有线网络消失问题解决方法\"><a href=\"#Ubuntu20-04有线网络消失问题解决方法\" class=\"headerlink\" title=\"Ubuntu20.04有线网络消失问题解决方法\"></a>Ubuntu20.04有线网络消失问题解决方法</h1><ul>\n<li><p>现象<br>右上角有线网络图标消失，设置中也看不到了(・-・*)</p>\n</li>\n<li><p>原因<br>我个人出现的原因是上次非正常强制关机了，下次开机就看不到有线网络图标了(＠_＠;)</p>\n<span id=\"more\"></span></li>\n<li><p>解决方法<br>打开终端</p>\n<pre><code class=\"hljs linux\">sudo nmcli networking off\nsudo nmcli networking on</code></pre>\n\n<p>便可以看到有线网络图标重新出现啦╰(<em>°▽°</em>)╯</p>\n</li>\n</ul>\n",
-            "tags": [
-                "ubuntu",
-                "network"
-            ]
-        },
-        {
             "id": "http://wanglanhuajiaofen.fun/2024/02/29/clash/",
             "url": "http://wanglanhuajiaofen.fun/2024/02/29/clash/",
             "title": "Ubuntu安装+配置clash",
@@ -62,26 +32,6 @@
             "content_html": "<h1 id=\"Ubuntu23-10安装clash全过程-各种问题解决方案\"><a href=\"#Ubuntu23-10安装clash全过程-各种问题解决方案\" class=\"headerlink\" title=\"Ubuntu23.10安装clash全过程(各种问题解决方案)\"></a>Ubuntu23.10安装clash全过程(各种问题解决方案)</h1><!-- <font face=\"逐浪新宋\" color=grey size=6>该篇blog将详细描述自己在ubuntu系统下安装clash的过程和遇到的各种问题与bug_ o(￣ヘ￣o＃)</font> -->\n\n<hr>\n<h2 id=\"操作步骤\"><a href=\"#操作步骤\" class=\"headerlink\" title=\"操作步骤\"></a>操作步骤</h2><hr>\n<ul>\n<li>安装clash包<ul>\n<li><p>在终端中首先开启root权限</p>\n<pre><code class=\"hljs linux\">su</code></pre></li>\n</ul>\n</li>\n</ul>\n<span id=\"more\"></span>\n<ul>\n<li><p>在当前用户目录中创建名为clash的文件夹（名字自取即可）然后切换到该目录</p>\n<pre><code class=\"hljs linux\">mkdir ./clash\ncd ./clash</code></pre>\n</li>\n<li><p>下载clash的几种方式(因为clash作者删库跑路了，所以无法从作者的仓库中下载)</p>\n<ul>\n<li><p>wget + 下载url</p>\n  <pre><code class=\"hljs apache\"><span class=\"hljs-attribute\">wget</span> https://github.com/Dreamacro/clash/releases/download/v1.<span class=\"hljs-number\">14</span>.<span class=\"hljs-number\">0</span>/clash-linux-amd64-v1.<span class=\"hljs-number\">14</span>.<span class=\"hljs-number\">0</span>.gz</code></pre>\n</li>\n<li><p>在ubuntu firefox浏览器找github备份仓库直接下载(考验你的网络(☆´益&#96;)c)</p>\n<ul>\n<li>这里我直接贴备用仓库的url   <a href=\"https://github.com/doreamon-design/clash/releases\" title=\"bushi\">备用仓库</a></li>\n<li>注意选择对应的版本<br><img src=\"https://s2.loli.net/2024/02/29/76kTCNn4QjL5ehA.png\" alt=\"这是我选的版本\" title=\"myversion\"></li>\n</ul>\n</li>\n<li><p>如果显示无法连接，则可能是系统代理的问题(对于我是这样(￣△￣；)),参考下面blog<br> <a href=\"https://blog.csdn.net/kids_budong_c/article/details/123479499,\" title=\"bushi\">这是解决大法!</a></p>\n</li>\n</ul>\n</li>\n</ul>\n<hr>\n<ul>\n<li>解压clash包<br>我下载的clash包的后缀是.tar.gz<br>这里可能会遇到如下问题:<ul>\n<li>解压后tar后缀还在<br>解决方法:   <code>tar -zxvf 压缩文件名.tar.gz</code></li>\n<li>大部分教程给的都是gzip解压，这个方式对我不适用</li>\n</ul>\n</li>\n</ul>\n<hr>\n<ul>\n<li><p>赋予权限</p>\n  <pre><code class=\"hljs linux\">chmod +x 解压缩后的文件名</code></pre></li>\n</ul>\n<hr>\n<ul>\n<li><p>移动</p>\n <pre><code class=\"hljs linux\">mv 解压缩后的文件名 /usr/local/bin/clash</code></pre></li>\n</ul>\n<hr>\n<ul>\n<li><p>查看版本</p>\n<pre><code class=\"hljs linux\">clash -v</code></pre>\n\n<ul>\n<li>如果这一步报错：无法执行二进制文件，那就是大概你下载的clash包有问题，我的解决方法是用上述第二种方式o(*≧▽≦)ツ┏━┓</li>\n</ul>\n<p>如果没有报错，正常显示出了clash版本号，那么到目前为止都非常顺利的成功了( ￣ー￣)人(^▽^ )</p>\n</li>\n</ul>\n<hr>\n<ul>\n<li>启动clash<ul>\n<li><p>启动clash</p>\n<pre><code class=\"hljs ebnf\"><span class=\"hljs-attribute\">clash</span></code></pre>\n\n<p>这一步会显示系统缺失有些配置文件，自动会给你下载好</p>\n</li>\n<li><p>导入配置文件(配置文件获取方式不再赘述)<br>配置文件所在目录:</p>\n<pre><code class=\"hljs arduino\">$home/.config/clash/</code></pre>\n\n<p>.config为隐藏文件夹，对于不熟悉终端的小伙伴在图形界面的文件夹按下CTRL+H即可<br>将获得的配置文件改名为config.yaml替换上述目录中的config.yaml即可</p>\n</li>\n<li><p>重新启动clash</p>\n<pre><code class=\"hljs ebnf\"><span class=\"hljs-attribute\">clash</span></code></pre>\n\n<p>此时会显示出你的订阅的相关信息，即表示成功<br><strong>在启动clash的条件下，访问以下链接可以进入clash图形控制页面</strong><br><a href=\"https://clash.razord.top/#/proxies\" title=\"就是我啦Σ(っ °Д °;)っ\">clash图形控制页面</a></p>\n</li>\n</ul>\n</li>\n</ul>\n<hr>\n<ul>\n<li>Ubuntu系统网络代理设置<br><img src=\"https://s2.loli.net/2024/02/29/8INVmetSdK9gRWk.png\" alt=\"Alt text\"><br>这里我遇到一个问题是，我成功连接了梯子之后仍然翻不了墙，就一直在调这个代理设置，最终在按照上图输入之后可以了 <strong>但是我不知道是不是因为这个原因才成功的Ｏ(≧口≦)Ｏ</strong></li>\n</ul>\n<hr>\n<ul>\n<li>设置开机自启<ul>\n<li><p>复制以下片段</p>\n <pre><code class=\"hljs ini\"><span class=\"hljs-attr\">Description</span>=Clash - A rule-based tunnel in Go\n<span class=\"hljs-attr\">Documentation</span>=https://github.com/Dreamacro/clash/wiki\n<span class=\"hljs-section\">[Service]</span>\n<span class=\"hljs-attr\">OOMScoreAdjust</span>=-<span class=\"hljs-number\">1000</span>\n<span class=\"hljs-attr\">ExecStart</span>=/usr/local/bin/clash -f /home/rongrong/.config/clash/config.yaml <span class=\"hljs-comment\"># 注意这里要根据自己的配置路径进行相应的修改</span>\n<span class=\"hljs-attr\">Restart</span>=<span class=\"hljs-literal\">on</span>-failure\n<span class=\"hljs-attr\">RestartSec</span>=<span class=\"hljs-number\">5</span>\n<span class=\"hljs-section\">[Install]</span>\n<span class=\"hljs-attr\">WantedBy</span>=multi-user.target\n</code></pre>\n</li>\n<li><p>依次输入以下命令即可</p>\n <pre><code class=\"hljs bash\">\nsystemctl <span class=\"hljs-built_in\">enable</span> clash\nsystemctl start clash\n<span class=\"hljs-built_in\">echo</span> -e <span class=\"hljs-string\">&quot;export http_proxy=&lt;http://127.0.0.1:7890\\nexport&gt; https_proxy=&lt;http://127.0.0.1:7890&gt;&quot;</span> &gt;&gt; ~/.bashrc</code></pre></li>\n</ul>\n</li>\n</ul>\n<hr>\n<h1 id=\"小结\"><a href=\"#小结\" class=\"headerlink\" title=\"小结\"></a>小结</h1><p>ubuntu安装和配置clash确实是一个繁琐的过程，而网上的教程没有对一些问题的解决方案，我把自己在配置过程中遇到的问题写了出来，供大家参考!!!</p>\n<hr>\n<!-- <font face=\"逐浪新宋\" color=cyan size=10>谢啦!!☆⌒(*＾-゜)v</font> -->\n",
             "tags": [
                 "clash"
-            ]
-        },
-        {
-            "id": "http://wanglanhuajiaofen.fun/2024/02/20/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2bug%E5%B0%8F%E7%BB%93/",
-            "url": "http://wanglanhuajiaofen.fun/2024/02/20/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2bug%E5%B0%8F%E7%BB%93/",
-            "title": "hexo搭建博客bug小结",
-            "date_published": "2024-02-19T16:00:00.000Z",
-            "content_html": "<h1 id=\"hexo搭建博客的过程中遇到的一些问题\"><a href=\"#hexo搭建博客的过程中遇到的一些问题\" class=\"headerlink\" title=\"hexo搭建博客的过程中遇到的一些问题\"></a>hexo搭建博客的过程中遇到的一些问题</h1><h2 id=\"node-js与npm相关\"><a href=\"#node-js与npm相关\" class=\"headerlink\" title=\"node.js与npm相关\"></a>node.js与npm相关</h2><ul>\n<li>下载<br>从官网下载node.js后，基本只需要一路next即可，最重要的是选择add to path.</li>\n<li>使用源<ul>\n<li><p>截止到2024&#x2F;2&#x2F;19为止，网上很多教程中的淘宝源均已无法使用，下面的为最新且有效的淘宝镜像:<a href=\"https://registry.npmmirror.com/\">https://registry.npmmirror.com</a></p>\n</li>\n<li><p>先下载好cnpm会让之后的工作事半功倍b（￣▽￣）d</p>\n</li>\n</ul>\n</li>\n</ul>\n<span id=\"more\"></span>\n<p>下面贴上代码:</p>\n<pre><code class=\"hljs node.js\">\nnpm i -g cnpm --registry=https://registry.npmmirror.com</code></pre>\n\n<ul>\n<li>目录权限问题：如果遇到npm下载报错说权限不够等问题，win + r 输入cmd之后不着急回车，此时ctrl+shift+回车即可以管理员身份打开cmd，即可解决问题。</li>\n</ul>\n<hr>\n<h2 id=\"hexo相关\"><a href=\"#hexo相关\" class=\"headerlink\" title=\"hexo相关\"></a>hexo相关</h2><ul>\n<li><p>如果成功的下载了cnpm，那么之后使用npm下载的东西都用cnpm来替代，就能解决大部分无法下载的问题(๑•̀ㅂ•́)و✧</p>\n</li>\n<li><p>创建一个专门处理blog的文件夹，之后所有操作都在这个文件夹的根目录进行即可。</p>\n</li>\n<li><p><em><strong>重点</strong></em>：hexo init报错: 此时只需要在根目录输入:</p>\n</li>\n</ul>\n<pre><code class=\"hljs cmake\">\ncnpm <span class=\"hljs-keyword\">install</span>\nhexo s\n</code></pre>\n\n<p>即可解决。</p>\n<hr>\n<h2 id=\"部署到github\"><a href=\"#部署到github\" class=\"headerlink\" title=\"部署到github\"></a>部署到github</h2><ul>\n<li>在根目录_config.yml文件中ropo后面输入github仓库页的ssh链接而非https链接。</li>\n<li>所有键值对后面都有 <strong>空格</strong></li>\n</ul>\n<hr>\n<h2 id=\"主题\"><a href=\"#主题\" class=\"headerlink\" title=\"主题\"></a>主题</h2><p>只需要在对应开源主题看文档即可按照自己意愿更改。</p>\n<hr>\n<h1 id=\"总结\"><a href=\"#总结\" class=\"headerlink\" title=\"总结\"></a>总结</h1><p>这篇文章集结了全部(大概)我在用一下午时间hexo搭建博客中遇到的问题，网上的方法有对的也有错的，经历了许久的试错后，终于找到的正确方法都被我记录在上面啦O(∩_∩)O!!!</p>\n",
-            "tags": [
-                "hexo"
-            ]
-        },
-        {
-            "id": "http://wanglanhuajiaofen.fun/2024/02/19/%E5%88%9D%E6%90%AD%E5%8D%9A%E5%AE%A2/",
-            "url": "http://wanglanhuajiaofen.fun/2024/02/19/%E5%88%9D%E6%90%AD%E5%8D%9A%E5%AE%A2/",
-            "title": "初搭博客",
-            "date_published": "2024-02-18T16:00:00.000Z",
-            "content_html": "<h1 id=\"MyFirstBlog\"><a href=\"#MyFirstBlog\" class=\"headerlink\" title=\"MyFirstBlog\"></a>MyFirstBlog</h1><p>date: 2024-02-19 14:46</p>\n<hr>\n<h2 id=\"这是我第一篇博客，但这不是我第一次搭建博客\"><a href=\"#这是我第一篇博客，但这不是我第一次搭建博客\" class=\"headerlink\" title=\"这是我第一篇博客，但这不是我第一次搭建博客&#x3D;,&#x3D;\"></a>这是我第一篇博客，但这不是我第一次搭建博客&#x3D;,&#x3D;</h2><h2 id=\"庆祝成功-•̀-ω-•́-y\"><a href=\"#庆祝成功-•̀-ω-•́-y\" class=\"headerlink\" title=\"庆祝成功( •̀ ω •́ )y\"></a>庆祝成功( •̀ ω •́ )y</h2>",
-            "tags": [
-                "test"
             ]
         }
     ]
