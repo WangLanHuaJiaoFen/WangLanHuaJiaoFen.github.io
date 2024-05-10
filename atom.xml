@@ -3,7 +3,7 @@
     <id>http://wanglanhuajiaofen.fun</id>
     <title>王兰花椒粉的秘密小窝</title>
     <link href="http://wanglanhuajiaofen.fun" />
-    <updated>2024-05-10T15:58:23.462Z</updated>
+    <updated>2024-05-02T16:00:00.000Z</updated>
     <category term="hexo" />
     <category term="clash" />
     <category term="test" />
@@ -13,13 +13,6 @@
     <category term="selenium" />
     <category term="ubuntu" />
     <category term="network" />
-    <entry>
-        <id>http://wanglanhuajiaofen.fun/archives.html</id>
-        <title>文章归档</title>
-        <link rel="alternate" href="http://wanglanhuajiaofen.fun/archives.html"/>
-        <content type="html"></content>
-        <updated>2024-05-10T15:58:23.462Z</updated>
-    </entry>
     <entry>
         <id>http://wanglanhuajiaofen.fun/2024/05/03/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/</id>
         <title>Openwrt UnblockNeteaseMusic使用记录</title>
