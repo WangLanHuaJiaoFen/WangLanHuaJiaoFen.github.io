@@ -21,31 +21,19 @@
 &lt;h2 id=&#34;Openwrt-UnblockNeteaseMusic-使用记录&#34;&gt;&lt;a href=&#34;#Openwrt-UnblockNeteaseMusic-使用记录&#34; class=&#34;headerlink&#34; title=&#34;Openwrt UnblockNeteaseMusic 使用记录&#34;&gt;&lt;/a&gt;Openwrt UnblockNeteaseMusic 使用记录&lt;/h2&gt;&lt;p&gt;unblockNeteaseMusic可以用来播放网易云音乐中的灰色歌曲，或者实现免vip播放会员歌曲等功能ヽ(✿ﾟ▽ﾟ)ノ&lt;br&gt;但是该软件包出的挺早的了，对于最新版的网易云音乐已经无法实现上述功能了(((φ(◎ロ◎;)φ)))&lt;br&gt;可能是最新版本网易云音乐做了奇奇怪怪的防护措施(-__-)&amp;#x3D;@))&amp;gt; o然后直接把这个东西给ban了。&lt;/p&gt;
 &lt;h2 id=&#34;Setup&#34;&gt;&lt;a href=&#34;#Setup&#34; class=&#34;headerlink&#34; title=&#34;Setup&#34;&gt;&lt;/a&gt;Setup&lt;/h2&gt;&lt;p&gt;360t7路由器 237系统(LuCI openwrt-21.02 &amp;#x2F; LuCI openwrt-21.02)&lt;br&gt;&lt;a href=&#34;https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic&#34;&gt;luci-unblockneteasemusic(JavaScript) 3.2&lt;/a&gt; ps:也可以在luci管理页面下载&lt;br&gt;&lt;a href=&#34;https://www.lanzoui.com/ioPkInxh8yf&#34;&gt;网易云音乐2.7.2(上古版本)&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://pan.baidu.com/s/18zVWFPHZ4PXaKgjc0LXMMg?pwd=8q64&#34;&gt;安卓极速版网易云音乐&lt;/a&gt; 提取码:8q64&lt;/p&gt;
 &lt;h2 id=&#34;步骤&#34;&gt;&lt;a href=&#34;#步骤&#34; class=&#34;headerlink&#34; title=&#34;步骤&#34;&gt;&lt;/a&gt;步骤&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;下载好软件包后，在路由器luci设置页面选择服务，选中解除网易云音乐播放限制。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;点击启用服务，其他选项可按照自己意愿选择。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;开启进阶设置，在命令行输入&lt;/p&gt;
-&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
-&lt;pre&gt;&lt;code class=&#34;cmd&#34;&gt;ping music.163.com
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然后将网易云音乐的ip复制，粘贴到网易云服务器ip。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;设置&amp;#x2F;下载证书及公钥私钥&lt;br&gt;参考链接&lt;a href=&#34;https://github.com/nondanee/UnblockNeteaseMusic/issues/48#issuecomment-477870013&#34;&gt;证书下载&lt;/a&gt;&lt;br&gt;然后在luci设置页面选择自签发证书的公钥私钥为自签的公钥私钥。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;附上我的配置图&lt;br&gt;&lt;img src=&#34;https://s2.loli.net/2024/05/04/Mob3xTjPWkhZGat.png&#34; alt=&#34;meow&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在windows网易云音乐中设置代理，服务器为你的路由器ip，端口为5200(默认)，然后重启网易云音乐，即可实现开头提的功能。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果还是不行，考虑将路由器的ipv6给禁用&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;shell&#34;&gt;/etc/init.d/odhcpd disable
-/etc/init.d/odhcpd stop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;del&gt;安卓端设置路由器wifi代理：PAC地址为http:&amp;#x2F;&amp;#x2F;你的路由器ip&amp;#x2F;proxy.pac&lt;/del&gt;&lt;br&gt;&lt;del&gt;ps：可以在设置前先登录你的账号，然后再设置代理，否则设置代理后你就无法登录了。&lt;/del&gt;&lt;br&gt;&lt;strong&gt;上述方法会导致哔哩哔哩报错：无网络连接，其它app是否有这个问题暂时不清楚。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;注：经本人测试，只要连接路由器WIFI，就可以实现上述功能，不需要设置代理。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;此时你就可以在连接你路由器局域网的情况下在windows和安卓机上面畅享  脚臭  了(&amp;#x2F;&amp;#x2F;&amp;#x2F;￣皿￣)○～&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;下载好软件包后，在路由器luci设置页面选择服务，选中解除网易云音乐播放限制。&lt;/li&gt;
+&lt;li&gt;点击启用服务，其他选项可按照自己意愿选择。&lt;/li&gt;
+&lt;li&gt;开启进阶设置，在命令行输入&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs cmd&#34;&gt;&lt;span class=&#34;hljs-built_in&#34;&gt;ping&lt;/span&gt; music.&lt;span class=&#34;hljs-number&#34;&gt;163&lt;/span&gt;.com&lt;/code&gt;&lt;/pre&gt;
+
+然后将网易云音乐的ip复制，粘贴到网易云服务器ip。&lt;/li&gt;
+&lt;li&gt;设置&amp;#x2F;下载证书及公钥私钥&lt;br&gt;参考链接&lt;a href=&#34;https://github.com/nondanee/UnblockNeteaseMusic/issues/48#issuecomment-477870013&#34;&gt;证书下载&lt;/a&gt;&lt;br&gt;然后在luci设置页面选择自签发证书的公钥私钥为自签的公钥私钥。&lt;/li&gt;
+&lt;li&gt;附上我的配置图&lt;br&gt;&lt;img src=&#34;https://s2.loli.net/2024/05/04/Mob3xTjPWkhZGat.png&#34; alt=&#34;meow&#34;&gt;&lt;/li&gt;
+&lt;li&gt;在windows网易云音乐中设置代理，服务器为你的路由器ip，端口为5200(默认)，然后重启网易云音乐，即可实现开头提的功能。&lt;/li&gt;
+&lt;li&gt;如果还是不行，考虑将路由器的ipv6给禁用&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;/etc/init.d/odhcpd disable
+/etc/init.d/odhcpd stop&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;安卓端设置路由器wifi代理：PAC地址为http:&amp;#x2F;&amp;#x2F;你的路由器ip&amp;#x2F;proxy.pac&lt;/del&gt;&lt;br&gt;&lt;del&gt;ps：可以在设置前先登录你的账号，然后再设置代理，否则设置代理后你就无法登录了。&lt;/del&gt;&lt;br&gt;&lt;strong&gt;上述方法会导致哔哩哔哩报错：无网络连接，其它app是否有这个问题暂时不清楚。&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;注：经本人测试，只要连接路由器WIFI，就可以实现上述功能，不需要设置代理。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;此时你就可以在连接你路由器局域网的情况下在windows和安卓机上面畅享  脚臭  了(&amp;#x2F;&amp;#x2F;&amp;#x2F;￣皿￣)○～&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;总结&#34;&gt;&lt;a href=&#34;#总结&#34; class=&#34;headerlink&#34; title=&#34;总结&#34;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;  花了很久很久才搞明白这个东西，一直遇到开启服务后网易云音乐会断网的问题怒ε&amp;#x3D;怒ε&amp;#x3D;( o｀ω′)ノ&lt;/p&gt;
 &lt;p&gt;  查了很多很多资料，时间都挺早的，应该是大家最近搞这个软件包的人不多，然后我四面八方收集信息之后，终于找到了以上解决办法(ー&amp;#96;´ー)&lt;/p&gt;
@@ -90,9 +78,9 @@
         <link rel="alternate" href="http://wanglanhuajiaofen.fun/2024/03/24/selenium/"/>
         <content type="html">&lt;h1 id=&#34;Selenium-报错ValueError解决&#34;&gt;&lt;a href=&#34;#Selenium-报错ValueError解决&#34; class=&#34;headerlink&#34; title=&#34;Selenium 报错ValueError解决&#34;&gt;&lt;/a&gt;Selenium 报错ValueError解决&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;错误&lt;br&gt;  在python中使用selenium进行网页自动化&amp;#x2F;爬虫操作时，执行下面语句&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;python&#34;&gt;from selenium import webdriver
-driver = webdriver.Edge()
-&lt;/code&gt;&lt;/pre&gt;
+  &lt;pre&gt;&lt;code class=&#34;hljs python&#34;&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;from&lt;/span&gt; selenium &lt;span class=&#34;hljs-keyword&#34;&gt;import&lt;/span&gt; webdriver
+driver = webdriver.Edge()&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;  可能会报错：ValueError: Timeout value connect was ……, but it must be an int, float or None…..(&amp;#x2F;- -)&amp;#x2F;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -101,10 +89,8 @@ driver = webdriver.Edge()
 &lt;li&gt;&lt;p&gt;原因&lt;br&gt;出错原因：selenium当前版本与urllib3版本不兼容╮（﹀_﹀）╭&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;解决方法&lt;br&gt;只需要更新为最新版本的selenium与urllib3即可Σ( ° △ °|||)︴&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;python&#34;&gt;pip install -U selenimu
-pip install -U urllib3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs python&#34;&gt;pip install -U selenimu
+pip install -U urllib3&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
         <category term="python" />
@@ -121,9 +107,9 @@ pip install -U urllib3
 &lt;li&gt;&lt;p&gt;原因&lt;br&gt;我个人出现的原因是上次非正常强制关机了，下次开机就看不到有线网络图标了(＠_＠;)&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;解决方法&lt;br&gt;打开终端&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;linux&#34;&gt;sudo nmcli networking off
-sudo nmcli networking on
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs linux&#34;&gt;sudo nmcli networking off
+sudo nmcli networking on&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;便可以看到有线网络图标重新出现啦╰(&lt;em&gt;°▽°&lt;/em&gt;)╯&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -143,24 +129,20 @@ sudo nmcli networking on
 &lt;ul&gt;
 &lt;li&gt;安装clash包&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;在终端中首先开启root权限&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;linux&#34;&gt;su
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs linux&#34;&gt;su&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;在当前用户目录中创建名为clash的文件夹（名字自取即可）然后切换到该目录&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;linux&#34;&gt;mkdir ./clash
-cd ./clash
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs linux&#34;&gt;mkdir ./clash
+cd ./clash&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;下载clash的几种方式(因为clash作者删库跑路了，所以无法从作者的仓库中下载)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;wget + 下载url&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;wget https://github.com/Dreamacro/clash/releases/download/v1.14.0/clash-linux-amd64-v1.14.0.gz
-&lt;/code&gt;&lt;/pre&gt;
+  &lt;pre&gt;&lt;code class=&#34;hljs apache&#34;&gt;&lt;span class=&#34;hljs-attribute&#34;&gt;wget&lt;/span&gt; https://github.com/Dreamacro/clash/releases/download/v1.&lt;span class=&#34;hljs-number&#34;&gt;14&lt;/span&gt;.&lt;span class=&#34;hljs-number&#34;&gt;0&lt;/span&gt;/clash-linux-amd64-v1.&lt;span class=&#34;hljs-number&#34;&gt;14&lt;/span&gt;.&lt;span class=&#34;hljs-number&#34;&gt;0&lt;/span&gt;.gz&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;在ubuntu firefox浏览器找github备份仓库直接下载(考验你的网络(☆´益&amp;#96;)c)&lt;/p&gt;
 &lt;ul&gt;
@@ -184,22 +166,18 @@ cd ./clash
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;赋予权限&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;linux&#34;&gt;chmod +x 解压缩后的文件名
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
+  &lt;pre&gt;&lt;code class=&#34;hljs linux&#34;&gt;chmod +x 解压缩后的文件名&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;移动&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;linux&#34;&gt; mv 解压缩后的文件名 /usr/local/bin/clash
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
+ &lt;pre&gt;&lt;code class=&#34;hljs linux&#34;&gt;mv 解压缩后的文件名 /usr/local/bin/clash&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;查看版本&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;linux&#34;&gt;clash -v
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs linux&#34;&gt;clash -v&lt;/code&gt;&lt;/pre&gt;
+
 &lt;ul&gt;
 &lt;li&gt;如果这一步报错：无法执行二进制文件，那就是大概你下载的clash包有问题，我的解决方法是用上述第二种方式o(*≧▽≦)ツ┏━┓&lt;/li&gt;
 &lt;/ul&gt;
@@ -210,18 +188,18 @@ cd ./clash
 &lt;ul&gt;
 &lt;li&gt;启动clash&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;启动clash&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;clash
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs ebnf&#34;&gt;&lt;span class=&#34;hljs-attribute&#34;&gt;clash&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;这一步会显示系统缺失有些配置文件，自动会给你下载好&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;导入配置文件(配置文件获取方式不再赘述)&lt;br&gt;配置文件所在目录:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$home/.config/clash/
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs arduino&#34;&gt;$home/.config/clash/&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;.config为隐藏文件夹，对于不熟悉终端的小伙伴在图形界面的文件夹按下CTRL+H即可&lt;br&gt;将获得的配置文件改名为config.yaml替换上述目录中的config.yaml即可&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;重新启动clash&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;clash
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs ebnf&#34;&gt;&lt;span class=&#34;hljs-attribute&#34;&gt;clash&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;此时会显示出你的订阅的相关信息，即表示成功&lt;br&gt;&lt;strong&gt;在启动clash的条件下，访问以下链接可以进入clash图形控制页面&lt;/strong&gt;&lt;br&gt;&lt;a href=&#34;https://clash.razord.top/#/proxies&#34; title=&#34;就是我啦Σ(っ °Д °;)っ&#34;&gt;clash图形控制页面&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -235,24 +213,22 @@ cd ./clash
 &lt;ul&gt;
 &lt;li&gt;设置开机自启&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;复制以下片段&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Description=Clash - A rule-based tunnel in Go
-Documentation=https://github.com/Dreamacro/clash/wiki
-[Service]
-OOMScoreAdjust=-1000
-ExecStart=/usr/local/bin/clash -f /home/rongrong/.config/clash/config.yaml # 注意这里要根据自己的配置路径进行相应的修改
-Restart=on-failure
-RestartSec=5
-[Install]
-WantedBy=multi-user.target
+ &lt;pre&gt;&lt;code class=&#34;hljs ini&#34;&gt;&lt;span class=&#34;hljs-attr&#34;&gt;Description&lt;/span&gt;=Clash - A rule-based tunnel in Go
+&lt;span class=&#34;hljs-attr&#34;&gt;Documentation&lt;/span&gt;=https://github.com/Dreamacro/clash/wiki
+&lt;span class=&#34;hljs-section&#34;&gt;[Service]&lt;/span&gt;
+&lt;span class=&#34;hljs-attr&#34;&gt;OOMScoreAdjust&lt;/span&gt;=-&lt;span class=&#34;hljs-number&#34;&gt;1000&lt;/span&gt;
+&lt;span class=&#34;hljs-attr&#34;&gt;ExecStart&lt;/span&gt;=/usr/local/bin/clash -f /home/rongrong/.config/clash/config.yaml &lt;span class=&#34;hljs-comment&#34;&gt;# 注意这里要根据自己的配置路径进行相应的修改&lt;/span&gt;
+&lt;span class=&#34;hljs-attr&#34;&gt;Restart&lt;/span&gt;=&lt;span class=&#34;hljs-literal&#34;&gt;on&lt;/span&gt;-failure
+&lt;span class=&#34;hljs-attr&#34;&gt;RestartSec&lt;/span&gt;=&lt;span class=&#34;hljs-number&#34;&gt;5&lt;/span&gt;
+&lt;span class=&#34;hljs-section&#34;&gt;[Install]&lt;/span&gt;
+&lt;span class=&#34;hljs-attr&#34;&gt;WantedBy&lt;/span&gt;=multi-user.target
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;依次输入以下命令即可&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;
-systemctl enable clash
+ &lt;pre&gt;&lt;code class=&#34;hljs bash&#34;&gt;
+systemctl &lt;span class=&#34;hljs-built_in&#34;&gt;enable&lt;/span&gt; clash
 systemctl start clash
-echo -e &amp;quot;export http_proxy=&amp;lt;http://127.0.0.1:7890\nexport&amp;gt; https_proxy=&amp;lt;http://127.0.0.1:7890&amp;gt;&amp;quot; &amp;gt;&amp;gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
+&lt;span class=&#34;hljs-built_in&#34;&gt;echo&lt;/span&gt; -e &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;export http_proxy=&amp;lt;http://127.0.0.1:7890\nexport&amp;gt; https_proxy=&amp;lt;http://127.0.0.1:7890&amp;gt;&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -280,9 +256,9 @@ echo -e &amp;quot;export http_proxy=&amp;lt;http://127.0.0.1:7890\nexport&amp;gt
 &lt;/ul&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;p&gt;下面贴上代码:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;node.js&#34;&gt;
-    npm i -g cnpm --registry=https://registry.npmmirror.com
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs node.js&#34;&gt;
+npm i -g cnpm --registry=https://registry.npmmirror.com&lt;/code&gt;&lt;/pre&gt;
+
 &lt;ul&gt;
 &lt;li&gt;目录权限问题：如果遇到npm下载报错说权限不够等问题，win + r 输入cmd之后不着急回车，此时ctrl+shift+回车即可以管理员身份打开cmd，即可解决问题。&lt;/li&gt;
 &lt;/ul&gt;
@@ -295,10 +271,11 @@ echo -e &amp;quot;export http_proxy=&amp;lt;http://127.0.0.1:7890\nexport&amp;gt
 &lt;li&gt;&lt;p&gt;&lt;em&gt;&lt;strong&gt;重点&lt;/strong&gt;&lt;/em&gt;：hexo init报错: 此时只需要在根目录输入:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;
-cnpm install
+&lt;pre&gt;&lt;code class=&#34;hljs cmake&#34;&gt;
+cnpm &lt;span class=&#34;hljs-keyword&#34;&gt;install&lt;/span&gt;
 hexo s
 &lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;即可解决。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;部署到github&#34;&gt;&lt;a href=&#34;#部署到github&#34; class=&#34;headerlink&#34; title=&#34;部署到github&#34;&gt;&lt;/a&gt;部署到github&lt;/h2&gt;&lt;ul&gt;

@@ -34,9 +34,9 @@
 &lt;/ul&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;p&gt;下面贴上代码:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;node.js&#34;&gt;
-    npm i -g cnpm --registry=https://registry.npmmirror.com
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs node.js&#34;&gt;
+npm i -g cnpm --registry=https://registry.npmmirror.com&lt;/code&gt;&lt;/pre&gt;
+
 &lt;ul&gt;
 &lt;li&gt;目录权限问题：如果遇到npm下载报错说权限不够等问题，win + r 输入cmd之后不着急回车，此时ctrl+shift+回车即可以管理员身份打开cmd，即可解决问题。&lt;/li&gt;
 &lt;/ul&gt;
@@ -49,10 +49,11 @@
 &lt;li&gt;&lt;p&gt;&lt;em&gt;&lt;strong&gt;重点&lt;/strong&gt;&lt;/em&gt;：hexo init报错: 此时只需要在根目录输入:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;
-cnpm install
+&lt;pre&gt;&lt;code class=&#34;hljs cmake&#34;&gt;
+cnpm &lt;span class=&#34;hljs-keyword&#34;&gt;install&lt;/span&gt;
 hexo s
 &lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;即可解决。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;部署到github&#34;&gt;&lt;a href=&#34;#部署到github&#34; class=&#34;headerlink&#34; title=&#34;部署到github&#34;&gt;&lt;/a&gt;部署到github&lt;/h2&gt;&lt;ul&gt;

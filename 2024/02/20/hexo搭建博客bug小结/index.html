@@ -56,7 +56,7 @@
 	<body>
 		<div
 			class="kira-background"
-			style="background-image: url('https://s2.loli.net/2024/05/10/IztRuk6bsxGVy1C.jpg')"
+			style="background-image: url('https://s2.loli.net/2024/05/10/PNOxdnpwsciKT4Y.jpg')"
 		></div>
 		<div class="kira-header">
     <a
@@ -108,7 +108,7 @@
 		
 		<a
 			class="kira-list-item mdui-ripple false"
-			href="/archive.html"
+			href="/archives/index.html"
 			title="文章归档"
 		>
 			<i
@@ -311,12 +311,9 @@
 <div class="kira-post">
 	<article>
 		
-		<div
-			class="kira-post-cover"
-			style="padding-bottom: '56.25%'"
-		>
+		<div class="kira-post-cover">
 			<img
-				data-src="https://s2.loli.net/2024/05/10/IztRuk6bsxGVy1C.jpg"
+				data-src="https://s2.loli.net/2024/05/10/XnNWY1KUfSQsIAF.webp"
 				data-sizes="auto"
 				alt="hexo搭建博客bug小结"
 				class="lazyload kira-post-cover-image disabled-kira-image"
@@ -341,9 +338,9 @@
 </ul>
 <span id="more"></span>
 <p>下面贴上代码:</p>
-<pre><code class="node.js">
-    npm i -g cnpm --registry=https://registry.npmmirror.com
-</code></pre>
+<pre><code class="hljs node.js">
+npm i -g cnpm --registry=https://registry.npmmirror.com</code></pre>
+
 <ul>
 <li>目录权限问题：如果遇到npm下载报错说权限不够等问题，win + r 输入cmd之后不着急回车，此时ctrl+shift+回车即可以管理员身份打开cmd，即可解决问题。</li>
 </ul>
@@ -356,10 +353,11 @@
 <li><p><em><strong>重点</strong></em>：hexo init报错: 此时只需要在根目录输入:</p>
 </li>
 </ul>
-<pre><code>
-cnpm install
+<pre><code class="hljs cmake">
+cnpm <span class="hljs-keyword">install</span>
 hexo s
 </code></pre>
+
 <p>即可解决。</p>
 <hr>
 <h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><ul>

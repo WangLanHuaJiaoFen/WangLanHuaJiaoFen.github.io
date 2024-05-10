@@ -29,9 +29,9 @@
 &lt;li&gt;&lt;p&gt;原因&lt;br&gt;我个人出现的原因是上次非正常强制关机了，下次开机就看不到有线网络图标了(＠_＠;)&lt;/p&gt;
 &lt;span id=&#34;more&#34;&gt;&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;解决方法&lt;br&gt;打开终端&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;linux&#34;&gt;sudo nmcli networking off
-sudo nmcli networking on
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;hljs linux&#34;&gt;sudo nmcli networking off
+sudo nmcli networking on&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;便可以看到有线网络图标重新出现啦╰(&lt;em&gt;°▽°&lt;/em&gt;)╯&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
