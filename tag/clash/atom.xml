@@ -14,6 +14,7 @@
     <category term="ubuntu" />
     <category term="network" />
     <category term="summary" />
+    <category term="docker" />
     <entry>
         <id>http://wanglanhuajiaofen.fun/2024/02/29/clash/</id>
         <title>Ubuntu安装+配置clash</title>

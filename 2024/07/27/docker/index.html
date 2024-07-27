@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/layout.css">
 
 		
-		<title> selenium报错ValueError -  王兰花椒粉的秘密小窝</title>
+		<title> Ubuntu23.10 docker安装与配置 -  王兰花椒粉的秘密小窝</title>
 		<!-- <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" /> -->
 		<!-- <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script> -->
 		
@@ -349,35 +349,71 @@
 		
 		<div class="kira-post-cover">
 			<img
-				data-src="https://s2.loli.net/2024/05/10/eUKyDbVGNfcmkZW.jpg"
+				data-src="https://s2.loli.net/2024/07/27/JRBiXyo6Qe4lhWv.png"
 				data-sizes="auto"
-				alt="selenium报错ValueError"
+				alt="Ubuntu23.10 docker安装与配置"
 				class="lazyload kira-post-cover-image disabled-kira-image"
 			/>
-			<h1>selenium报错ValueError</h1>
+			<h1>Ubuntu23.10 docker安装与配置</h1>
 		</div>
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
-			<a><i class="kirafont icon-calendar-fill"></i>2024年03月24日</a>
-			<a><i class="kirafont icon-edit-fill"></i>105 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 1 分钟</a>
+			<a><i class="kirafont icon-calendar-fill"></i>2024年07月27日</a>
+			<a><i class="kirafont icon-edit-fill"></i>524 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
 		</div>
-		<h1 id="Selenium-报错ValueError解决"><a href="#Selenium-报错ValueError解决" class="headerlink" title="Selenium 报错ValueError解决"></a>Selenium 报错ValueError解决</h1><ul>
-<li><p>错误<br>  在python中使用selenium进行网页自动化&#x2F;爬虫操作时，执行下面语句</p>
-  <pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
-driver = webdriver.Edge()</code></pre>
-
-<p>  可能会报错：ValueError: Timeout value connect was ……, but it must be an int, float or None…..(&#x2F;- -)&#x2F;</p>
-</li>
-</ul>
+		<h1 id="起始"><a href="#起始" class="headerlink" title="起始"></a>起始</h1><p>最近开始学docker了，感觉docker很厉害o(￣▽￣)ｄ可以很方便的部署各种环境。然鹅果不其然，配环境是一大问题┌(。Д。)┐<br>这里就简单整理下Ubuntu23.10 安装与配置docker的过程叭✧(≖ ◡ ≖)</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">docker官网</a><br><a target="_blank" rel="noopener" href="https://docker-practice.github.io/zh-cn/install/ubuntu.html">Docker — 从入门到实践</a></p>
 <span id="more"></span>
+
+<h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>docker要求较新的ubuntu版本，建议选择20.04之后的LTS Ubuntu。<br>我用的是Ubuntu23.10LTS。</p>
+<h2 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h2><p>无论是否存在旧版本都可以执行以下命令，以防万一。</p>
+<pre><code class="hljs bash">sudo apt-get remove docker \
+           docker-engine \
+           docker.io</code></pre>
+<h2 id="前置步骤"><a href="#前置步骤" class="headerlink" title="前置步骤"></a>前置步骤</h2><pre><code class="hljs bash">sudo apt-get update  <span class="hljs-comment"># 更新可用软件包信息</span>
+sudo apt-get install ca-certificates curl <span class="hljs-comment"># 安装ca证书和curl</span>
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker-archive-keyring.gpg <span class="hljs-comment"># 添加软件源gpg密钥</span></code></pre>
+
+<h2 id="ubuntu换国内源"><a href="#ubuntu换国内源" class="headerlink" title="ubuntu换国内源"></a>ubuntu换国内源</h2><p>参考<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/">清华大学开源软件镜像站</a>自行换源</p>
+<h2 id="使用apt安装docker"><a href="#使用apt安装docker" class="headerlink" title="使用apt安装docker"></a>使用apt安装docker</h2><pre><code class="hljs bash">  <span class="hljs-comment"># 添加docker源</span>
+  <span class="hljs-built_in">echo</span> \
+<span class="hljs-string">&quot;deb [arch=<span class="hljs-subst">$(dpkg --print-architecture signed-by=/etc/apt/keyrings/docker-archive-keyring.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu \</span></span>
+<span class="hljs-subst"><span class="hljs-string">$(lsb_release -cs)</span> stable&quot;</span> | sudo <span class="hljs-built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null</code></pre>
+
+<pre><code class="hljs bash">sudo apt-get update  <span class="hljs-comment"># 更新</span>
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin  <span class="hljs-comment"># 安装docker</span></code></pre>
+
+<h2 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h2><pre><code class="hljs bash">systemctl <span class="hljs-built_in">enable</span> docker  <span class="hljs-comment"># 开机启动</span>
+systemctl start docker  <span class="hljs-comment"># 启动docker</span></code></pre>
+
+<h2 id="赋予用户权限"><a href="#赋予用户权限" class="headerlink" title="赋予用户权限"></a>赋予用户权限</h2><pre><code class="hljs bash">sudo <span class="hljs-built_in">chown</span> (yourname) /var/run/docker.sock</code></pre>
+
+<h2 id="配置镜像加速"><a href="#配置镜像加速" class="headerlink" title="配置镜像加速"></a>配置镜像加速</h2><p>登录<a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">阿里云镜像加速</a>根据文档进行设置镜像加速。</p>
+<pre><code class="hljs bash">sudo <span class="hljs-built_in">mkdir</span> -p /etc/docker
+sudo <span class="hljs-built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="hljs-string">&#x27;EOF&#x27;</span>
+&#123;
+  <span class="hljs-string">&quot;registry-mirrors&quot;</span>: [<span class="hljs-string">&quot;https://qt4gy4oh.mirror.aliyuncs.com&quot;</span>]
+&#125;
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker</code></pre>
+
+<h2 id="测试docker是否安装成功"><a href="#测试docker是否安装成功" class="headerlink" title="测试docker是否安装成功"></a>测试docker是否安装成功</h2><pre><code class="hljs bash">docker run --<span class="hljs-built_in">rm</span> hello-world</code></pre>
+<p>如果拉取失败，参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/macwinwin/article/details/113967667">blog</a>可以选择执行以下步骤：</p>
 <ul>
-<li><p>原因<br>出错原因：selenium当前版本与urllib3版本不兼容╮（﹀_﹀）╭</p>
-</li>
-<li><p>解决方法<br>只需要更新为最新版本的selenium与urllib3即可Σ( ° △ °|||)︴</p>
-<pre><code class="hljs python">pip install -U selenimu
-pip install -U urllib3</code></pre></li>
+<li>修改DNS<pre><code class="hljs vim"><span class="hljs-keyword">vim</span> /etc/resolv.<span class="hljs-keyword">conf</span></code></pre>
+nameserver改为8.8.8.8</li>
+<li>重新修改镜像仓库地址</li>
 </ul>
+<p>若执行了上述步骤，再次执行</p>
+<pre><code class="hljs bash">sudo systemctl daemon-reload
+sudo systemctl restart docker
+docker run --<span class="hljs-built_in">rm</span> hello-world</code></pre>
+<p>这次应该就可以完美拉取了ヽ(✿ﾟ▽ﾟ)ノ</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>真是一场酣畅淋漓的docker安装啊Σ(っ °Д °;)っ</p>
+<p>由于桌面版比较简单，这里就不再赘述了(＠_＠;)</p>
 
 	</article>
 
@@ -385,32 +421,26 @@ pip install -U urllib3</code></pre></li>
   
 	<div class="kira-post-nav">
 		<nav class="post-nav">
-			      
+			  
 			<!-- 先找到与当前文字相同的目录 -->
-			      
+			            
 			<!-- 在找到当前文章所在的 index -->
-			    
+			            
 			<!-- 上一篇文章 -->
 			<div class="old">
 				<span>上一章</span>
-				<a href="/2024/02/20/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2bug%E5%B0%8F%E7%BB%93/"> hexo搭建博客bug小结</a>
+				<a href="/2024/05/03/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/"> Openwrt UnblockNeteaseMusic使用记录</a>
 			</div>
-			       
-			<!-- 下一篇文章 -->
-			<div class="new">
-				<span>下一章</span>
-				<a href="/2024/03/24/net/"> Ubuntu20.04有线网络消失</a>
-			</div>
-			              
+			                  
 		</nav>
 	</div>
 	
 	<div class="kira-post-meta kira-rainbow">
 		
-			<a class="kirafont icon-container-fill -link" href="/categories/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/">报错解决</a>
+			<a class="kirafont icon-container-fill -link" href="/categories/%E6%8A%80%E6%9C%AF-%E7%BC%96%E7%A8%8B/">技术/编程</a>
 		
 		
-			<a class="kirafont icon-tag-fill -none-link" href="/tags/python/" rel="tag">python</a> <a class="kirafont icon-tag-fill -none-link" href="/tags/selenium/" rel="tag">selenium</a>
+			<a class="kirafont icon-tag-fill -none-link" href="/tags/docker/" rel="tag">docker</a>
 		
 	</div>
 	
