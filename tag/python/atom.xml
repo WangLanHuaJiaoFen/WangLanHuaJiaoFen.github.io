@@ -15,6 +15,7 @@
     <category term="network" />
     <category term="summary" />
     <category term="docker" />
+    <category term="刷问卷星" />
     <entry>
         <id>http://wanglanhuajiaofen.fun/2024/03/24/selenium/</id>
         <title>selenium报错ValueError</title>
